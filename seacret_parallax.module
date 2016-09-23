@@ -1,0 +1,198 @@
+<?php 
+
+/**
+ * Implementation of hook_block_info
+ */
+
+function seacret_parallax_block_info() {
+  
+  // This example comes from node.module.
+  $blocks['seacret_parallax'] = array(
+    'info' => t('Seacret Parallax Home Page Block'),
+	'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  /*
+  $blocks['blank_block2'] = array(
+    'info' => t('Blank Block 2 Title'),
+    // DRUPAL_CACHE_PER_ROLE will be assumed.
+  );
+  */
+
+  return $blocks;
+  
+}
+
+
+
+
+/**
+ * Implementation of hook_block_view
+ */
+
+function seacret_parallax_block_view($delta="")
+  {
+  $block = array();
+  switch ($delta)
+    {
+    case "seacret_parallax":
+      $block['subject'] = t('Seacret Parallax Home Page Block');
+      $block['content'] = seacret_parallax();
+      break;
+      
+    default:
+      $block['subject'] = t('Seacret Parallax Home Page Block');
+      $block['content'] = seacret_parallax();
+      break;
+	
+	/*
+	case "blank_block2":
+      $block['subject'] = t('Blank Block 2 Title');
+      $block['content'] = blank_block2();
+      break;
+      
+    default:
+      $block['subject'] = t('Blank Block 2 Title');
+      $block['content'] = blank_block2();
+      break;
+	*/
+	
+    }// end switch ($delta)
+
+  return($block);
+}// end function blank_block_view($delta="")
+
+
+
+
+/**
+ * function that returns the block HTML
+ */
+
+function seacret_parallax()
+  {
+
+	//GET GLOBAL PATH TO MODULE
+    global $base_root;
+    global $base_path;
+    global $user;
+    $directory = $base_root . $base_path;
+    $module_path = drupal_get_path('module', 'seacret_parallax');
+    $path = $base_root.''.$base_path.''.$module_path;
+	  
+	 // INCLUDE PARALLAX CSS FILE
+	$element = array(
+	  '#tag' => 'link', // The #tag is the html tag - <link />
+	  '#attributes' => array( // Set up an array of attributes inside the tag
+		'href' => ''.$path.'/style/parallax.css',
+		'rel' => 'stylesheet',
+		'type' => 'text/css',
+	  ),
+	);
+	drupal_add_html_head($element, 'seacret_parallax_style');
+
+	
+	// INCLUDE JQUERY LIBRARY
+	drupal_add_library('system', 'ui');
+	
+	// INCLUDE 
+    drupal_add_js(''.$path.'/js/js.js',
+    array('type' => 'external', 'scope' => 'header', 'weight' => 1000)
+    );
+	
+	// INCLUDE STELLAR
+    drupal_add_js(''.$path.'/js/jquery.stellar.min.js',
+    array('type' => 'external', 'scope' => 'header', 'weight' => 1000)
+    );
+	
+	// INCLUDE Waypoints
+    drupal_add_js(''.$path.'/js/waypoints.min.js',
+    array('type' => 'external', 'scope' => 'header', 'weight' => 1000)
+    );
+	
+	// INCLUDE Easing
+    drupal_add_js(''.$path.'/js/jquery.easing.1.3.js',
+    array('type' => 'external', 'scope' => 'header', 'weight' => 1000)
+    );
+	
+
+	$background_ratio = '0.5';
+	
+	
+
+	// SLIDE #1
+	$content .= '<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1>RECOVER YOUR RADIANCE</h1>';
+	$content .= '<h3>OUR RECOVER TECHNOLOGY SEEKS TO PROVIDE A LASTING SOLUTION THAT CAN REDUCE THE APPEARANCE OF WRINKLES, WITHOUT THE USE OF PAINFUL PROCEDURES OR UNNATURAL CHEMICALS.</h3>';
+	$content .= '<h3>COME ON WRINKLES, RELAX.</h3>';
+	$content .= '<a class="button_sliding_bg2">SHOP RECOVER</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+
+
+	// SLIDE #2
+	$content .= '<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1 class="white">PLAY IN THE MUD</h1>';
+	$content .= '<h3 class="white">THE BLACK MUD HARVESTED FROM THE BANKS OF THE DEAD SEA IS IN FACT ALLUVIAL SILT WASHED DOWN FROM THE SURROUNDING MOUNTAINS AND DEPOSITED ON THE SHORES OF THIS INLAND SALT SEA.</h3>';
+	$content .= '<h3 class="white">LAYER UPON LAYER OF FINE SILT DEPOSITS HAVE EVOLVED OVER THOUSANDS OF YEARS TO FORM A MINERAL-RICH MUD CONTAINING PARTICULARLY HIGH LEVELS OF MAGNESIUM, CALCIUM, POTASSIUM, STRONTIUM, BORON AND IRON.</h3>';
+	$content .= '<h3 class="white">EXFOLIATE. CLARIFY. SOOTHE. REGENERATE. BALANCE. HYDRATE. FORTIFY. </h3>';
+	$content .= '<a class="button_sliding_bg">SHOP</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+
+
+	// SLIDE #3
+	$content .= '<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1 class="white">BE MAGNETIC</h1>';
+	$content .= '<a class="button_sliding_bg">SHOP M4</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+
+
+	// SLIDE #4
+	$content .= '<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1>DEFY AGE</h1>';
+	$content .= '<h3>SEACRET\'S AGE-DEFYING LINE HELPS TO WARD OFF THE SIGNS OF AGING AND ADDRESSES WRINKLES AND FINE LINES THAT ALREADY EXIST BY BALANCING YOUR NATURAL OILS AND REPLACING LOST MOISTURE.</h3>';
+	$content .= '<h3>OUR UNIQUE PRODUCT INGREDIENTS INCORPORATE PEPTIDES, VITAMINS AND AMINO ACIDS, ESSENTIAL OILS, ALOE VERA, AND SO MUCH MORE.</h3>';
+	$content .= '<h3>AT THE BASE OF EVERY PRODUCT ARE MINERALS FROM THE SHORES OF THE DEAD SEA, WHICH HELP TO DIMINISH THE APPEARANCE OF AGING.</h3>';
+	$content .= '<a class="button_sliding_bg2">SHOP AGE DEFYING</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+	
+	
+	// SLIDE #5
+	$content .= '<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1>BE FRESH</h1>';
+	$content .= '<a class="button_sliding_bg2">SHOP FOUNDATIONAL SKINCARE</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+	
+	
+	// SLIDE #6
+	$content .= '<div class="slide" id="slide6" data-slide="6" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1>TRESS TO IMPRESS</h1>';
+	$content .= '<a class="button_sliding_bg2">SHOP HAIR</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+	
+	
+	// SLIDE #7
+	$content .= '<div class="slide" id="slide7" data-slide="7" data-stellar-background-ratio="'.$background_ratio.'">';
+	$content .= '<div class="parallax-text">';
+	$content .= '<h1 class="white">DUDE, WHAT’S YOUR SEACRET?</h1>';
+	$content .= '<a class="button_sliding_bg">SHOP MEN\'S</a>';
+	$content .= '</div>';
+	$content .= '</div>';
+
+
+	$content .= '';
+		
+	return($content);
+	  
+  }

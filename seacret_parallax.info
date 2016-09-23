@@ -1,0 +1,6 @@
+name = Seacret Home Page Parallax
+description = Parallax Scrollers for the Home Page
+core = 7.x
+
+package = "Seacret"
+version = "7.x"
