@@ -184,6 +184,14 @@ h2 {
 	text-align: center;	
 }
 
+#slide1 a:not(.btn), #slide4 a:not(.btn), #slide5 a:not(.btn), #slide6 a:not(.btn) {
+	color: #000;	
+}
+
+#slide1 a:not(.btn):hover, #slide4 a:not(.btn):hover, #slide5 a:not(.btn):hover, #slide6 a:not(.btn):hover {
+	color: #fff;	
+}
+
 .button_sliding_bg {
     color: #fff;
     background: transparent;
@@ -203,6 +211,15 @@ h2 {
 	-moz-transition: all ease 0.8s;
 	transition: all ease 0.8s;
 }
+
+#slide2 a:not(.btn), #slide3 a:not(.btn), #slide7 a:not(.btn) {
+	color: #fff;	
+}
+
+#slide2 a:not(.btn):hover, #slide3 a:not(.btn):hover, #slide7 a:not(.btn):hover {
+	color: #000;	
+}
+
 .button_sliding_bg:hover {
     box-shadow: inset 200px 0 0 0 #fff;
     color: #000;
