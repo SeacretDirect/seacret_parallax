@@ -1,35 +1,35 @@
 jQuery(document).ready(function ($) {
 
-	$(window).scroll(function(e) {
+	jQuery(window).scroll(function(e) {
     e.preventDefault();
 	
     //initialise Stellar.js
-    $(window).stellar();
+    jQuery(window).stellar();
 	
 
     //Cache some variables
-    var links = $('.navigation').find('li');
-    slide = $('.slide');
-    button = $('.button');
-    mywindow = $(window);
-    htmlbody = $('html,body');
+    var links = jQuery('.navigation').find('li');
+    slide = jQuery('.slide');
+    button = jQuery('.button');
+    mywindow = jQuery(window);
+    htmlbody = jQuery('html,body');
 
 
     //Setup waypoints plugin
     slide.waypoint(function (event, direction) {
 
         //cache the variable of the data-slide attribute associated with each slide
-        dataslide = $(this).attr('data-slide');
+        dataslide = jQuery(this).attr('data-slide');
 
         //If the user scrolls up change the navigation link that has the same data-slide attribute as the slide to active and 
         //remove the active class from the previous navigation link 
         if (direction === 'down') {
-            $('.navigation li[data-slide="' + dataslide + '"]').addClass('active').prev().removeClass('active');
+            jQuery('.navigation li[data-slide="' + dataslide + '"]').addClass('active').prev().removeClass('active');
         }
         // else If the user scrolls down change the navigation link that has the same data-slide attribute as the slide to active and 
         //remove the active class from the next navigation link 
         else {
-            $('.navigation li[data-slide="' + dataslide + '"]').addClass('active').next().removeClass('active');
+            jQuery('.navigation li[data-slide="' + dataslide + '"]').addClass('active').next().removeClass('active');
         }
 
     });
@@ -39,8 +39,8 @@ jQuery(document).ready(function ($) {
     //from navigation link slide 2 and adds it to navigation link slide 1. 
     mywindow.scroll(function () {
         if (mywindow.scrollTop() == 0) {
-            $('.navigation li[data-slide="1"]').addClass('active');
-            $('.navigation li[data-slide="2"]').removeClass('active');
+            jQuery('.navigation li[data-slide="1"]').addClass('active');
+            jQuery('.navigation li[data-slide="2"]').removeClass('active');
         }
     });
 
@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
     //easing plugin is also used, so we passed in the easing method of 'easeInOutQuint' which is available throught the plugin.
     function goToByScroll(dataslide) {
         htmlbody.animate({
-            scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
+            scrollTop: jQuery('.slide[data-slide="' + dataslide + '"]').offset().top
         }, 2000, 'easeInOutQuint');
     }
 
@@ -57,14 +57,14 @@ jQuery(document).ready(function ($) {
     //When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
     //links.click(function (e) {
         //e.preventDefault();
-        //dataslide = $(this).attr('data-slide');
+        //dataslide = jQuery(this).attr('data-slide');
         //goToByScroll(dataslide);
     //});
 
     //When the user clicks on the button, get the get the data-slide attribute value of the button and pass that variable to the goToByScroll function
     //button.click(function (e) {
         //e.preventDefault();
-        //dataslide = $(this).attr('data-slide');
+        //dataslide = jQuery(this).attr('data-slide');
         //goToByScroll(dataslide);
 
     //});

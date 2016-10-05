@@ -12,7 +12,7 @@ function seacret_parallax_block_info() {
 	'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
-  /*
+  /*DRUPAL_NO_CACHE
   $blocks['blank_block2'] = array(
     'info' => t('Blank Block 2 Title'),
     // DRUPAL_CACHE_PER_ROLE will be assumed.
