@@ -12,7 +12,10 @@ html,body{
 	height:100%;
 	position: relative;
 	min-height: 800px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+
 .slideno{
 	position:absolute;
 	bottom:0px;
@@ -68,6 +71,7 @@ html,body{
 	-o-background-size: cover;
 	background-size: 150% auto;
 	-webkit-transform: translate3d(0,0,0);
+
 }
 #slide3 .parallaxbg{
 	position:absolute;
