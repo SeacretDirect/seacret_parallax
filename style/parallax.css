@@ -12,8 +12,9 @@ html,body{
 	height:100%;
 	position: relative;
 	min-height: 800px;
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+    background-position: 50% 0 !important;
 }
 
 .slideno{
@@ -33,7 +34,6 @@ html,body{
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: 135% auto;
 	-webkit-transform: translate3d(0,0,0);
 }
 #slide1 .parallaxbg{
@@ -310,14 +310,16 @@ h2 {
 }
 
 .slide {
-	max-height: 600px;
-	min-height: 600px;	
+	max-height: 100%;
+	min-height: 100%;
 }
 
 #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #slide7{
-	background-attachment: scroll;
-	background-size: 325% auto;
-	background-position: left center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #slide5 {
